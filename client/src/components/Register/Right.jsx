@@ -32,7 +32,7 @@ const Right = () => {
         setPassError('')
         setError('')
         alert('User Register Successfully')
-        navigate('/profile')
+        navigate('/avatar')
     }
     return (
         <div className="min-h-screen w-3/5">
@@ -82,7 +82,6 @@ const Right = () => {
                     </div>
                 </div>
             </div >
-
         </div >
     )
 }
