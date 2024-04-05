@@ -36,5 +36,4 @@ router.post('/profile', upload.single('image'), async (req, res) => {
     }
 });
 router.post('/register', RegisterUser)
-
 export default router

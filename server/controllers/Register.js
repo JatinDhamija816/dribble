@@ -1,5 +1,16 @@
 import user from "../model/Register.js";
 import bcrypt from 'bcrypt'
+import nodemailer from 'nodemailer'
+import dotenv from 'dotenv'
+dotenv.config()
+let transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: process.env.GMAIL_ID,
+        pass: process.env.GMAIL_PASSWORD
+    }
+})
+
 export const RegisterUser = async (req, res) => {
     try {
         const { name, username, email, password, policy } = req.body
@@ -30,6 +41,14 @@ export const RegisterUser = async (req, res) => {
 
         const newUser = new user({ name, username, email, password: hashPassword, policy })
         await newUser.save()
+        const mailOptions = {
+            from: 'jdhamija816@gmail.com',
+            to: email,
+            subject: 'Form Submission',
+            text: 'Thank you for Register',
+        };
+
+        await transporter.sendMail(mailOptions);
         return res.status(201).json({
             msg: 'User Register Successfully'
         })
