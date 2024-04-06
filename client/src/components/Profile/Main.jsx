@@ -13,7 +13,7 @@ const Main = () => {
         const temp = { ...formData, ...data }
         setFormData(temp);
         try {
-            await axios.post('http://localhost:8000/profile', temp, {
+            await axios.post('https://dribble-6079.onrender.com/', temp, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
