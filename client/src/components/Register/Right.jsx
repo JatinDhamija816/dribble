@@ -26,7 +26,7 @@ const Right = () => {
             return;
         }
 
-        await axios.post('https://dribble-6079.onrender.com/', { name, username, email, password, policy })
+        await axios.post('https://dribble-6079.onrender.com/register', { name, username, email, password, policy })
             .then((response) => { setUser([...user, response.data]) })
             .catch(err => console.log(err))
         setName('')
