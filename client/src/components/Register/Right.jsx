@@ -13,6 +13,10 @@ const Right = () => {
     const [error, setError] = useState('');
     const Register = async (e) => {
         e.preventDefault()
+        if (!name || !username || !email || !password || !policy) {
+            alert('Please fill all the details')
+            return
+        }
         if (password.length < 6) {
             setPassError('Password Length must be greater than 6')
             return
@@ -21,6 +25,7 @@ const Right = () => {
             setError('You must agree to the Terms of Service')
             return;
         }
+
         await axios.post('http://localhost:8000/register', { name, username, email, password, policy })
             .then((response) => { setUser([...user, response.data]) })
             .catch(err => console.log(err))
@@ -45,28 +50,28 @@ const Right = () => {
                     <div className="flex">
                         <div className=" m-2 p-2 w-1/2">
                             <div><label className="font-semibold">Name</label></div>
-                            <div><input type="text" className="border w-full p-2 rounded-lg" value={name} onChange={(e) => setName(e.target.value)} /></div>
+                            <div><input type="text" className="border w-full p-2 rounded-lg" value={name} onChange={(e) => setName(e.target.value)} required /></div>
                         </div>
                         <div className="m-2 p-2 w-1/2">
                             <div><label className="font-semibold">Username</label></div>
-                            <div><input type="text" className="border w-full p-2 rounded-lg" value={username} onChange={(e) => setUsername(e.target.value)} /></div>
+                            <div><input type="text" className="border w-full p-2 rounded-lg" value={username} onChange={(e) => setUsername(e.target.value)} required /></div>
                         </div>
                     </div>
                     <div>
                         <div className="m-2 p-2 ">
                             <div><label className="font-semibold">Email</label></div>
-                            <input type="email" className="border w-full p-2 rounded-lg" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="email" className="border w-full p-2 rounded-lg" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         </div>
                     </div>
                     <div>
                         <div className="m-2 p-2 ">
                             <div><label className="font-semibold">Password</label></div>
-                            <input type="password" className="border w-full p-2 rounded-lg" placeholder="6+ characters" value={password} onChange={(e) => setPassword(e.target.value)} />{passerror && <p style={{ color: 'red' }}>{passerror}</p>}
+                            <input type="password" className="border w-full p-2 rounded-lg" placeholder="6+ characters" value={password} onChange={(e) => setPassword(e.target.value)} required />{passerror && <p style={{ color: 'red' }} >{passerror}</p>}
                         </div>
                     </div>
                     <div>
                         <div className="m-2 p-2 ">
-                            <p><input type="checkbox" value={policy} onChange={() => setPolicy(true)} /> I agree with Dribbble's <span className="text-blue-400 hover:cursor-pointer">Terms of Service</span>, <span className="text-blue-400 hover:cursor-pointer">Privacy Policy</span>, and default  <span className="text-blue-400 hover:cursor-pointer">Notification Settings</span>.</p>{error && <p style={{ color: 'red' }}>{error}</p>}
+                            <p><input type="checkbox" value={policy} onChange={() => setPolicy(true)} required /> I agree with Dribbble's <span className="text-blue-400 hover:cursor-pointer">Terms of Service</span>, <span className="text-blue-400 hover:cursor-pointer">Privacy Policy</span>, and default  <span className="text-blue-400 hover:cursor-pointer">Notification Settings</span>.</p>{error && <p style={{ color: 'red' }}>{error}</p>}
                         </div>
                     </div>
                     <div>

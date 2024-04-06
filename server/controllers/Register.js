@@ -45,7 +45,7 @@ export const RegisterUser = async (req, res) => {
             from: 'jdhamija816@gmail.com',
             to: email,
             subject: 'Form Submission',
-            text: 'Thank you for Register',
+            text: `Thank You ${name} for Register Happy Coding `,
         };
 
         await transporter.sendMail(mailOptions);
