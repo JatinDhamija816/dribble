@@ -40,31 +40,31 @@ const Right = () => {
         navigate('/profile')
     }
     return (
-        <div className="min-h-screen w-3/5">
+        <div className="min-h-screen w-3/5 md:w-full">
             <div className="text-right m-2 p-2 px-2">
                 <p className="font-semibold">Already a member? <span className="font-normal text-blue-300 hover:cursor-pointer">Sign in</span></p>
             </div>
             <div className=" w-4/6 m-auto p-2 my-2">
                 <h1 className='font-bold text-2xl p-4'>Sign up to Dribble</h1>
                 <div>
-                    <div className="flex">
-                        <div className=" m-2 p-2 w-1/2">
-                            <div><label className="font-semibold">Name</label></div>
-                            <div><input type="text" className="border w-full p-2 rounded-lg" value={name} onChange={(e) => setName(e.target.value)} required /></div>
+                    <div className="flex md:flex-col">
+                        <div className=" m-2 p-2 w-1/2 md:w-full">
+                            <div><label className="font-semibold ">Name</label></div>
+                            <div><input type="text" className="border w-full p-2 rounded-lg " value={name} onChange={(e) => setName(e.target.value)} required /></div>
                         </div>
-                        <div className="m-2 p-2 w-1/2">
+                        <div className="m-2 p-2 w-1/2 md:w-full">
                             <div><label className="font-semibold">Username</label></div>
                             <div><input type="text" className="border w-full p-2 rounded-lg" value={username} onChange={(e) => setUsername(e.target.value)} required /></div>
                         </div>
                     </div>
                     <div>
-                        <div className="m-2 p-2 ">
+                        <div className="m-2 p-2 md:w-full ">
                             <div><label className="font-semibold">Email</label></div>
                             <input type="email" className="border w-full p-2 rounded-lg" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         </div>
                     </div>
                     <div>
-                        <div className="m-2 p-2 ">
+                        <div className="m-2 p-2 md:w-full">
                             <div><label className="font-semibold">Password</label></div>
                             <input type="password" className="border w-full p-2 rounded-lg" placeholder="6+ characters" value={password} onChange={(e) => setPassword(e.target.value)} required />{passerror && <p style={{ color: 'red' }} >{passerror}</p>}
                         </div>
@@ -75,8 +75,8 @@ const Right = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="m-2 p-2">
-                            <button className="bg-pink-600 border-none rounded-lg text-white p-2 px-8" onClick={Register}>Create Account</button>
+                        <div className="m-2 p-2 ">
+                            <button className="bg-pink-600 border-none rounded-lg text-white p-2 px-8 " onClick={Register}>Create Account</button>
                         </div>
                     </div>
                     <div>
